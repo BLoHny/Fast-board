@@ -4,8 +4,8 @@ import java.time.LocalDateTime;
 
 public class Articlecomment {
     private Long id;
-    private Article article;
-    private String hashtag;
+    private Article article; // 게시글 id - bigint
+    private String content; // 본문 - varchar(2000)
 
     private LocalDateTime createdAt; // - 생성일시
     private String createdBy; // - 생성자 varchar(100)
