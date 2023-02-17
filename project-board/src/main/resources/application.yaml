@@ -15,14 +15,15 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     defer-datasource-initialization: true # -> 테스트용 database 데이터 생성
-    #hibernate.ddl-auto: create # -> 자동 Article, Article comment 생성
+
+    hibernate.ddl-auto: create # -> 자동 Article, Article comment 생성
     open-in-view: false
     show-sql: true
     properties:
       hibernate.format_sql: true
       hibernate.default_batch_fetch_size: 100 # -> 10개의 쿼리를 하나의 SELECT문으로 설정
   h2.console.enabled: false
-  sql.init.mode: always
+  sql.init.mode: never
 
   data.rest:
     base-path: /api

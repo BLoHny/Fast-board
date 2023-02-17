@@ -1,0 +1,2 @@
+insert into article(title, content, hashtag, created_at, created_by, modified_at, modifiedby)
+values('test_title', 'test apple pizza cola', '#spring', '2019-12-11T00:00:00.000000', 'aa', '2019-12-12', 'aa')

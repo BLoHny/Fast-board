@@ -8,9 +8,12 @@ import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
+import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Getter
 @ToString
@@ -21,6 +24,7 @@ import java.util.Objects;
         @Index(columnList = "createdAt"),
         @Index(columnList = "createdBy")
 })
+@EntityListeners(AuditingEntityListener.class) // -> 꼭 너넣아함
 @Entity // -> JPA Entity를 사용할때 hibernate를 기준으로 기본생성자를 갖춰야함
 public class Article {
 
@@ -32,6 +36,11 @@ public class Article {
     @Setter @Column(nullable = false, length = 10000) private String content; // - 본문 varchar(65535)
 
     @Setter private String hashtag; // - 해시태그 varchar(255)-> NULL 가능
+
+    @ToString.Exclude
+    @OrderBy("id")
+    @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)// -> articleTable로 오는것 cascade{경우}
+    private final Set<Articlecomment> articlecomments = new LinkedHashSet<>(); // -> 이아티클에 연동덴 comment는 collection으로 모아서본다
 
     @CreatedDate @Column(nullable = false) private LocalDateTime createdAt; // - 생성일시
     @CreatedBy @Column(nullable = false, length = 100) private String createdBy; // - 생성자 varchar(100)

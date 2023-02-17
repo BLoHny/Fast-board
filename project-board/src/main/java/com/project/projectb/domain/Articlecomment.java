@@ -8,6 +8,7 @@ import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -19,6 +20,7 @@ import java.util.Objects;
         @Index(columnList = "createdAt"),
         @Index(columnList = "createdBy")
 })
+@EntityListeners(AuditingEntityListener.class) // -> 꼭 너넣아함
 @Entity
 public class Articlecomment {
 
@@ -27,7 +29,7 @@ public class Articlecomment {
     private Long id;
 
     @Setter @ManyToOne(optional = false) private Article article; // 게시글 id - bigint #Article을 바라보기위해 @ManyToOne 사용
-    @Setter @Column(nullable = false, length = 2000) private String content; // 본문 - varchar(2000)
+    @Setter @Column(nullable = false, length = 200) private String content; // 본문 - varchar(2000)
 
     @CreatedDate @Column(nullable = false) private LocalDateTime createdAt; // - 생성일시
     @CreatedBy @Column(nullable = false, length = 100) private String createdBy; // - 생성자 varchar(100)
