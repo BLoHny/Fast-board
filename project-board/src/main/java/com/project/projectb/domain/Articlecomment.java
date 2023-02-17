@@ -20,9 +20,8 @@ import java.util.Objects;
         @Index(columnList = "createdAt"),
         @Index(columnList = "createdBy")
 })
-@EntityListeners(AuditingEntityListener.class) // -> 꼭 너넣아함
 @Entity
-public class Articlecomment {
+public class Articlecomment extends AuditingFields{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // -> 자동으로 Autoincrement 생성
@@ -30,11 +29,6 @@ public class Articlecomment {
 
     @Setter @ManyToOne(optional = false) private Article article; // 게시글 id - bigint #Article을 바라보기위해 @ManyToOne 사용
     @Setter @Column(nullable = false, length = 200) private String content; // 본문 - varchar(2000)
-
-    @CreatedDate @Column(nullable = false) private LocalDateTime createdAt; // - 생성일시
-    @CreatedBy @Column(nullable = false, length = 100) private String createdBy; // - 생성자 varchar(100)
-    @LastModifiedDate @Column(nullable = false) private LocalDateTime modifiedAt; // 수정일시 - datetime
-    @LastModifiedBy @Column(nullable = false, length = 100) private String modifiedBY; // 수정자 - varchar(100)
 
     protected Articlecomment() {}
 

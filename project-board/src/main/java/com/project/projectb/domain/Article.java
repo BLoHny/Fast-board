@@ -24,9 +24,8 @@ import java.util.Set;
         @Index(columnList = "createdAt"),
         @Index(columnList = "createdBy")
 })
-@EntityListeners(AuditingEntityListener.class) // -> 꼭 너넣아함
 @Entity // -> JPA Entity를 사용할때 hibernate를 기준으로 기본생성자를 갖춰야함
-public class Article {
+public class Article extends AuditingFields{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // -> 자동으로 Autoincrement 생성
@@ -41,11 +40,6 @@ public class Article {
     @OrderBy("id")
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)// -> articleTable로 오는것 cascade{경우}
     private final Set<Articlecomment> articlecomments = new LinkedHashSet<>(); // -> 이아티클에 연동덴 comment는 collection으로 모아서본다
-
-    @CreatedDate @Column(nullable = false) private LocalDateTime createdAt; // - 생성일시
-    @CreatedBy @Column(nullable = false, length = 100) private String createdBy; // - 생성자 varchar(100)
-    @LastModifiedDate @Column(nullable = false) private LocalDateTime modifiedAt; // 수정일시 - datetime
-    @LastModifiedBy @Column(nullable = false, length = 100) private String modifiedBY; // 수정자 - varchar(100)
 
     protected Article() {}
 
