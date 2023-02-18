@@ -20,3 +20,6 @@ spring:
       hibernate.format_sql: true
       hibernate.default_batch_fetch_size: 100 # -> 10개의 쿼리를 하나의 SELECT문으로 설정
   sql.init.mode: always
+  data.rest:
+      base-path:  /api
+      detection-strategy: annotated
