@@ -15,7 +15,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.time.LocalDateTime;
 
 @Getter
-@ToString
+
 @EntityListeners(AuditingEntityListener.class) // -> 꼭 너넣아함
 @MappedSuperclass
 public class AuditingFields {
