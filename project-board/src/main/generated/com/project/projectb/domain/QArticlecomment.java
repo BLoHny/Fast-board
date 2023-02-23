@@ -11,16 +11,16 @@ import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
- * QArticlecomment is a Querydsl query type for Articlecomment
+ * QArticleComment is a Querydsl query type for ArticleComment
  */
 @Generated("com.querydsl.codegen.DefaultEntitySerializer")
-public class QArticlecomment extends EntityPathBase<Articlecomment> {
+public class QArticleComment extends EntityPathBase<ArticleComment> {
 
-    private static final long serialVersionUID = -119183888L;
+    private static final long serialVersionUID = 1545469392L;
 
     private static final PathInits INITS = PathInits.DIRECT2;
 
-    public static final QArticlecomment articlecomment = new QArticlecomment("articlecomment");
+    public static final QArticleComment articleComment = new QArticleComment("articleComment");
 
     public final QAuditingFields _super = new QAuditingFields(this);
 
@@ -42,25 +42,25 @@ public class QArticlecomment extends EntityPathBase<Articlecomment> {
     //inherited
     public final StringPath modifiedBY = _super.modifiedBY;
 
-    public QArticlecomment(String variable) {
-        this(Articlecomment.class, forVariable(variable), INITS);
+    public QArticleComment(String variable) {
+        this(ArticleComment.class, forVariable(variable), INITS);
     }
 
-    public QArticlecomment(Path<? extends Articlecomment> path) {
+    public QArticleComment(Path<? extends ArticleComment> path) {
         this(path.getType(), path.getMetadata(), PathInits.getFor(path.getMetadata(), INITS));
     }
 
-    public QArticlecomment(PathMetadata metadata) {
+    public QArticleComment(PathMetadata metadata) {
         this(metadata, PathInits.getFor(metadata, INITS));
     }
 
-    public QArticlecomment(PathMetadata metadata, PathInits inits) {
-        this(Articlecomment.class, metadata, inits);
+    public QArticleComment(PathMetadata metadata, PathInits inits) {
+        this(ArticleComment.class, metadata, inits);
     }
 
-    public QArticlecomment(Class<? extends Articlecomment> type, PathMetadata metadata, PathInits inits) {
+    public QArticleComment(Class<? extends ArticleComment> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.article = inits.isInitialized("article") ? new QArticle(forProperty("article")) : null;
+        this.article = inits.isInitialized("article") ? new QArticle(forProperty("article"), inits.get("article")) : null;
     }
 
 }
